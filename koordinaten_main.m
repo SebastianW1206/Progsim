@@ -42,10 +42,5 @@ fprintf('Kreisbogen: %.6f km\n', d_kreisbogen_D - d_kreisbogen_S);
 fprintf('Mittelbreite: %.6f km\n', d_mittelbreite_D - d_mittelbreite_S);
 fprintf('Haversine: %.6f km\n', d_haversine_D - d_haversine_S);
 
-%% Funktion zur Abstandberechnung
-%d_kreis=kreisbogen(lat1, lon1, lat2, lon2, precision);
 
-%d_mittel=distance_mittelbreite(lat1, lon1, lat2, lon2, precision);
-
-%d_haversine=haversine(lat1, lon1, lat2, lon2, precision);
 
