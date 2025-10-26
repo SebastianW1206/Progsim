@@ -10,8 +10,19 @@ disp('Verfügbare Häfen:');
 disp(haefen.Hafen);
 
 % Benutzer wählt zwei Häfen
-idx1 = input('Index Hafen 1: ');
-idx2 = input('Index Hafen 2: ');
+idx1 = input('Geben Sie Index von den ersten Hafen von 1 bis 10: ');
+idx2 = input('Geben Sie Index von den zweiten Hafen von 1 bis 10: ');
+
+% Überprüfung das index ist gültig
+if idx1 < 1 || idx1 > 10
+    fprintf('Fehler: Index 1 liegt außerhalb des gültigen Bereichs (1 bis 10).\n');
+end
+
+if idx2 < 1 || idx2 > 10
+    fprintf('Fehler: Index 2 liegt außerhalb des gültigen Bereichs (1 bis 10).\n');
+end
+
+    
 
 lat1 = haefen.Breite(idx1);
 lon1 = haefen.Laenge(idx1);
