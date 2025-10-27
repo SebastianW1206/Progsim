@@ -1,11 +1,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Vollständiges und korrigiertes Test-Skript zur Distanzberechnung
+% Test Routine
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 1. INITIALISIERUNG UND DATENDEFINITION
 clc; clear;
-
-% ANMERKUNG: Die Funktionen (kreisbogen, distance_mittelbreite, haversine) 
-% MÜSSEN als separate .m-Dateien im MATLAB-Pfad verfügbar sein.
 
 % 1.1 Koordinaten der Häfen (Breite, Länge)
 haefen = struct();
@@ -24,7 +21,7 @@ test_strecken = {
 num_strecken = size(test_strecken, 1);
 
 % 1.3 Referenzdistanzen (ungefähre Luftlinie/Großkreis, Google Maps)
-ref_distanzen = [412; 16120; 2029]; % Reihenfolge: HH-RT, HH-SYD, LA-SA
+ref_distanzen = [412; 16120; 2029]; 
 
 % 1.4 Initialisierung der Datenstrukturen für die Plots
 % Plot 1: [Ref_Dist, Kreisbogen(D), Mittelbreite(D), Haversine(D)]
@@ -94,7 +91,7 @@ end
 %% 3. PLOT 1: Double Precision vs. Referenz (Eignungsvergleich)
 %----------------------------------------------------------------------
 
-figure('Name', 'Plot 1: Eignungsvergleich'); 
+figure('Name', 'Plot 1: Eignungsvergleich (Double vs. Referenz)'); 
 b1 = bar(plot_data_double);
 
 % Achsenbeschriftungen, Titel und Legende
@@ -111,11 +108,11 @@ legend({ ...
 }, 'Location', 'northwest');
 grid on;
 
-% Werte über den Balken anzeigen (Verwendung von num2str statt string)
+% Werte über den Balken anzeigen (Korrigierte Verwendung von num2str)
 for k = 1:size(plot_data_double, 2) 
     xtips = b1(k).XEndPoints;
     ytips = b1(k).YEndPoints;
-    % num2str zur Umwandlung von Zahl in String
+    % Verwendung von num2str und runden für die Anzeige
     labels = num2str(round(b1(k).YData(:))); 
     text(xtips, ytips, labels, ...
          'HorizontalAlignment', 'center', ...
@@ -140,17 +137,5 @@ ylabel('Absolute Differenz |Double - Single| (km)');
 title('Rundungsfehler durch Verwendung von Single Precision');
 legend({'Kreisbogen', 'Mittelbreite', 'Haversine'}, 'Location', 'northeast');
 grid on;
-
-% Werte über den Balken anzeigen (Verwendung von num2str statt string)
-for k = 1:size(plot_data_diff, 2)
-    xtips = b2(k).XEndPoints;
-    ytips = b2(k).YEndPoints;
-    % num2str mit Format-Argument zur Umwandlung von Zahl in String
-    labels = num2str(b2(k).YData, '%.3g'); 
-    text(xtips, ytips, labels, ...
-         'HorizontalAlignment', 'center', ...
-         'VerticalAlignment', 'bottom', ...
-         'FontSize', 8);
-end
 
 fprintf('\n\n** PLOT 2 (Präzisionsvergleich) generiert. **\n');
