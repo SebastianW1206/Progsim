@@ -11,5 +11,5 @@ function d = kreisbogen(lat1, lon1, lat2, lon2, precision)
     phi2 = deg2rad(lat2);
     lambda1 = deg2rad(lon1); 
     lambda2 = deg2rad(lon2);
-    delta_sigma = acos(sin(phi1).*sin(phi2) + cos(phi1).*cos(phi2).*cos(lambda2 - lambda1));
-    d = R * delta_sigma;
+    delta_sigma = sin(phi1).*sin(phi2) + cos(phi1).*cos(phi2).*cos(lambda2 - lambda1);
+    d = R * acos(delta_sigma);
