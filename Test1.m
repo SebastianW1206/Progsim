@@ -1,8 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Test Routine
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+set(groot, 'DefaultAxesFontSize', 20);
+set(groot, 'DefaultTextFontSize', 20);
+set(groot, 'DefaultAxesFontName', 'Helvetica');
+set(groot, 'DefaultTextFontName', 'Helvetica');
+
 %% 1. INITIALISIERUNG UND DATENDEFINITION
-clc; clear;
+clc; clear; close all
 
 % 1.1 Koordinaten der Häfen (Breite, Länge)
 haefen = struct();
@@ -117,7 +122,7 @@ for k = 1:size(plot_data_double, 2)
     text(xtips, ytips, labels, ...
          'HorizontalAlignment', 'center', ...
          'VerticalAlignment', 'bottom', ...
-         'FontSize', 8);
+         'FontSize', 20);
 end
 
 fprintf('\n\n** PLOT 1 (Double vs. Referenz) generiert. **\n');
